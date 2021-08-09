@@ -18,11 +18,35 @@ function contains(cell) {
 
 }
 
-const printCell = (cell, state) => {};
+const printCell = (cell, state) => {
+  if (contains.call(state, cell)){
+    return '\u25A3';
+  }
+  else{
+    return '\u25A2';
+  }
+};
 
-const corners = (state = []) => {};
+const corners = (state = []) => {
 
-const printCells = (state) => {};
+    if (state.length === 0) {
+     return {
+       topRight: [0, 0],
+       bottomLeft: [0, 0]
+      }
+    }
+
+    const xs = state.map(([x, _]) => x);
+    const ys = state.map(([_, y]) => y);
+    return {
+      topRight: [Math.max(...xs), Math.max(...ys)],
+      bottomLeft: [Math.min(...xs), Math.min(...ys)]
+    }
+};
+
+const printCells = (state) => {
+  
+};
 
 const getNeighborsOf = ([x, y]) => {};
 
